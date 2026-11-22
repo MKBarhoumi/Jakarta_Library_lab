@@ -1,40 +1,46 @@
-http://localhost:8080/library/api/
+# Library API
 
-Method  Path                    Success         Errors
-GET     /api/books              200 list	    —
-GET	    /api/books/{id}	        200	            404
-POST	/api/books	            201 + Location	400
-PUT	    /api/books/{id}	        200	            400, 404
-DELETE	/api/books/{id}	        204	            404
-GET	    /api/members	        200	            —
-POST	/api/members	        201	            400
-POST	/api/loans	            201	            400, 404, 409
-POST	/api/loans/{id}/return  200	            404, 409
+**URL:** `http://localhost:8080/library/api/`
 
-Book
+| Method | Path | Success | Errors | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| `GET` | `/api/books` | `200 OK` (list) | — | Get all books |
+| `GET` | `/api/books/{id}` | `200 OK` | `404 Not Found` | Get a book by ID |
+| `POST` | `/api/books` | `201 Created` + `Location` | `400 Bad Request` | Create a new book |
+| `PUT` | `/api/books/{id}` | `200 OK` | `400 Bad Request`, `404 Not Found` | Update an existing book |
+| `DELETE` | `/api/books/{id}` | `204 No Content` | `404 Not Found` | Delete a book |
+| `GET` | `/api/members` | `200 OK` | — | Get all members |
+| `POST` | `/api/members` | `201 Created` | `400 Bad Request` | Register a new member |
+| `POST` | `/api/loans` | `201 Created` | `400 Bad Request`, `404 Not Found`, `409 Conflict` | Create a new loan |
+| `POST` | `/api/loans/{id}/return` | `200 OK` | `404 Not Found`, `409 Conflict` | Return a loaned book |
+
+### Book
+```json
 {
-"id": 1,
-"title": "Clean Code",
-"author": "Robert C. Martin",
-"isbn": "9780132350884",
-"available": true
+  "id": 1,
+  "title": "Clean Code",
+  "author": "Robert C. Martin",
+  "isbn": "9780132350884",
+  "available": true
 }
+```
 
-
-Member
+### Member
+```json
 {
-"id": 1,
-"name": "Ahmed",
-"email": "ahmed@example.com"
+  "id": 1,
+  "name": "Ahmed",
+  "email": "ahmed@example.com"
 }
+```
 
-
-Loan
+### Loan
+```json
 {
-"id": 1,
-"bookId": 1,
-"memberId": 1,
-"loanedAt": "2026-11-19T10:00:00Z",
-"returnedAt": null
+  "id": 1,
+  "bookId": 1,
+  "memberId": 1,
+  "loanedAt": "2026-11-19T10:00:00Z",
+  "returnedAt": null
 }
-
+```
