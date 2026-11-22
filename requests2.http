@@ -1,0 +1,55 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+
+### 1. Get all books
+GET http://localhost:8080/api/books
+Accept: application/json
+
+###
+
+### 2. Get a book by ID
+GET http://localhost:8080/api/books/1
+Accept: application/json
+
+###
+
+### 3. Create a book
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "title": "Clean Code",
+  "author": "Robert C. Martin",
+  "isbn": "9780132350884"
+}
+
+###
+
+### 4. Create a book with blank title
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "title": "",
+  "author": "Robert C. Martin",
+  "isbn": "9780132350884"
+}
+
+###
+
+### 5. Update a book
+PUT http://localhost:8080/api/books/1
+Content-Type: application/json
+
+{
+  "title": "Clean Code Updated",
+  "author": "Robert C. Martin",
+  "isbn": "9780132350884"
+}
+
+###
+
+### 6. Delete a book
+DELETE http://localhost:8080/api/books/1
